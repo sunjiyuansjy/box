@@ -1,7 +1,7 @@
 #include<iostream>
 
 using namespace std;
-
+#if 0
 class Date
 {
 	public:
@@ -30,5 +30,29 @@ int main()
 	Date d1;
 	Date d2(d1);
 	cout<< d2._year<<endl;
+	return 0;
+}
+#endif
+
+class Date
+{
+	public:
+		Date(int year=1900,int month=1,int day=1)
+		{
+			_year=year;
+			_month=month;
+			_day=day;
+		}
+		//当拷贝构造函数没有显示的给出，而又需要使用时，系统会自动生成默认的拷贝构造函数
+		//默认的拷贝构造函数是按照值拷贝的方式实现对类类型的拷贝工作，因而就会发生浅拷贝问题
+	private:
+		int _year;
+		int _month;
+		int _day;
+};
+int main()
+{
+	Date d1;
+	Date d2(d1);
 	return 0;
 }
